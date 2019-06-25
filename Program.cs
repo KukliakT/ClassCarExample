@@ -6,11 +6,36 @@ using System.Threading.Tasks;
 
 namespace ClassCarExample
 {
+    class Company
+    {
+        Car[] ArrayCar;
+
+        public Company()
+        {
+            ArrayCar = new Car[5];
+        }
+
+        public Car this[int index]
+        {
+            get
+            {
+                return ArrayCar[index];
+            }
+            set
+            {
+                ArrayCar[index] = value;
+            }
+        }
+    }
+
+
     class Car
     {
         public string brand;
         private string color;
         public double price;
+
+
 
         public Car()
         {
@@ -69,7 +94,6 @@ namespace ClassCarExample
             };
         }
 
-
     }
 
 
@@ -77,15 +101,20 @@ namespace ClassCarExample
     {
         static void Main(string[] args)
         {
+            //Indexers
+            Company Iner = new Company();
+            Iner[0] = new Car("Reno", "white", 21500);
+            Iner[1] = new Car("Deo", "black", 9000);
+            Iner[2] = new Car();
+
+            Car deo = Iner[1];
+            deo.Print();
+            //End Indexers
+
+            //Check Overload operators
             Car focus = new Car("Ford", "blue", 12000);
-           // Car hz = new Car();
-           // Car megan = new Car("Reno", "white", 21500);
-
             focus.Print();
-            // hz.Print();
-            //megan.Print();
-
-            //focus.ChangePrice('+', 15);
+           
             Car newcar = focus + 15.0;
             Console.WriteLine();
             newcar.Print();
@@ -94,12 +123,6 @@ namespace ClassCarExample
             Console.WriteLine();
             newcar.Print();
 
-            /*megan.Input("Wols", "black", 9000);
-            Console.WriteLine();
-            megan.Print();
-
-            megan.Color = "green";
-            megan.Print();*/
         }
     }
 }
