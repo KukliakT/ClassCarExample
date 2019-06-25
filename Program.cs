@@ -48,23 +48,25 @@ namespace ClassCarExample
             Console.WriteLine();
         }
 
-        public void ChangePrice(char a, double x)
+        public static Car operator +(Car obj, double val)
         {
-          
-                double res;
-                if (a == '-')
-                {
-                    res = price * (x / 100);
-                    price -= res;
-                }
-                else if (a == '+')
-                {
-                    res = price * (x / 100);
-                    price += res;
-                }
-                else { Console.WriteLine("Wrong parametr"); }
+            obj.price += obj.price * (val / 100);
+            return new Car {
+                            price = obj.price,
+                            brand = obj.brand,
+                            color = obj.color
+                            };
+        }
 
-            
+        public static Car operator -(Car obj1, double val)
+        {
+            obj1.price -= (obj1.price * (val / 100));
+            return new Car
+            {
+                price = obj1.price,
+                brand = obj1.brand,
+                color = obj1.color
+            };
         }
 
 
@@ -76,23 +78,28 @@ namespace ClassCarExample
         static void Main(string[] args)
         {
             Car focus = new Car("Ford", "blue", 12000);
-            Car hz = new Car();
-            Car megan = new Car("Reno", "white", 21500);
+           // Car hz = new Car();
+           // Car megan = new Car("Reno", "white", 21500);
 
             focus.Print();
-            hz.Print();
-            megan.Print();
+            // hz.Print();
+            //megan.Print();
 
-            focus.ChangePrice('+', 15);
+            //focus.ChangePrice('+', 15);
+            Car newcar = focus + 15.0;
             Console.WriteLine();
-            focus.Print();
+            newcar.Print();
 
-            megan.Input("Wols", "black", 9000);
+            newcar = focus - 25.0;
+            Console.WriteLine();
+            newcar.Print();
+
+            /*megan.Input("Wols", "black", 9000);
             Console.WriteLine();
             megan.Print();
 
             megan.Color = "green";
-            megan.Print();
+            megan.Print();*/
         }
     }
 }
