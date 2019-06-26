@@ -109,6 +109,11 @@ namespace ClassCarExample
         }
 
 
+        public override string ToString()
+        {
+            return "Brand: " + brand + "| " + "Color: " + color + "| " + "Price: " + price;
+        }
+
     }
 
 
@@ -146,6 +151,9 @@ namespace ClassCarExample
             Console.WriteLine(audi1 == audi2);
 
 
+            Console.WriteLine(audi1.ToString());
+           
+            
         }
     }
 }
