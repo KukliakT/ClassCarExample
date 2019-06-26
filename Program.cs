@@ -94,6 +94,21 @@ namespace ClassCarExample
             };
         }
 
+        public static bool operator ==(Car obj1, Car obj2)
+        {
+            if (Equals(obj1.brand, obj2.brand) && obj1.price == obj2.price)
+            { return true; }
+            else { return false; }
+        }
+
+        public static bool operator !=(Car obj1, Car obj2)
+        {
+            if (!Equals(obj1.brand, obj2.brand) || obj1.price != obj2.price)
+                return true;
+            else return false;
+        }
+
+
     }
 
 
@@ -103,25 +118,33 @@ namespace ClassCarExample
         {
             //Indexers
             Company Iner = new Company();
-            Iner[0] = new Car("Reno", "white", 21500);
+            Iner[0] = new Car("Ford", "white", 12000);
             Iner[1] = new Car("Deo", "black", 9000);
             Iner[2] = new Car();
 
-            Car deo = Iner[1];
+            Car deo = Iner[0];
             deo.Print();
             //End Indexers
 
             //Check Overload operators
             Car focus = new Car("Ford", "blue", 12000);
+            
             focus.Print();
-           
+            
+
             Car newcar = focus + 15.0;
             Console.WriteLine();
             newcar.Print();
-
+            
             newcar = focus - 25.0;
             Console.WriteLine();
             newcar.Print();
+
+            Car audi1 = new Car("A6", "black", 122000);
+            Car audi2 = new Car("A6", "blue", 122000);
+
+            Console.WriteLine(audi1 == audi2);
+
 
         }
     }
